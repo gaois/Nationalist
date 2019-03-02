@@ -12,7 +12,7 @@ namespace Nationalist
         static void Main(string[] args)
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            environment = (environment.IsNullOrWhiteSpace()) ? "Production" : environment;
+            environment = (environment.IsNullOrWhiteSpace()) ? "Development" : environment;
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -23,9 +23,14 @@ namespace Nationalist
             var serviceProvider = ConfigureServiceProvider(configuration);
             var modifier = serviceProvider.GetService<IModifier>();
             var generator = serviceProvider.GetService<Generator>();
-            var locale = Interactions.GetTargetLocale();
 
-            generator.GenerateList(locale, modifier);
+            Console.WriteLine("This is a custom version of the Nationalist curated country list generator.");
+            Console.WriteLine("This program will generate files in English and Irish.");
+            Console.WriteLine("To generate files in other languages please clone the standard Nationalist repo.");
+            Console.WriteLine("Press any key to proceed...");
+            Console.ReadLine();
+
+            generator.GenerateList(modifier);
         }
 
         static IServiceProvider ConfigureServiceProvider(IConfiguration configuration)
@@ -44,6 +49,7 @@ namespace Nationalist
             services.AddSingleton<CsvGeneratorService>();
             services.AddSingleton<JsonGeneratorService>();
             services.AddSingleton<TsvGeneratorService>();
+            services.AddSingleton<GaoisGeneratorService>();
             services.AddSingleton<Generator>();
 
             return services.BuildServiceProvider();

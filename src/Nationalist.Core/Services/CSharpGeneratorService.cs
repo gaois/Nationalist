@@ -54,7 +54,7 @@ namespace Nationalist.Core
                 .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.StaticKeyword)))
                 .WithAccessorList(
                     AccessorList(
-                        List<AccessorDeclarationSyntax>(new AccessorDeclarationSyntax[]
+                        List(new AccessorDeclarationSyntax[]
                             { 
                                 AccessorDeclaration(SyntaxKind.GetAccessorDeclaration)
                                     .WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
@@ -128,7 +128,7 @@ namespace Nationalist.Core
                 .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.StaticKeyword)))
                 .WithAccessorList(
                     AccessorList(
-                        List<AccessorDeclarationSyntax>(new AccessorDeclarationSyntax[]
+                        List(new AccessorDeclarationSyntax[]
                             { 
                                 AccessorDeclaration(SyntaxKind.GetAccessorDeclaration)
                                     .WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
